@@ -34,13 +34,13 @@ def pr(item1 = None, item2 = None):
     
         if not item1 and not item2:
             # both are empty strings:
-            print()
+            print('')
         elif not item2:
             print(item1)
         else:
             print(item1 + ' ' *(COLUMN_2_START_POSITION - len(item1)) + ": " + item2)
     else:
-        print()
+        print('')
 
 def pr_dict(item1, dict1):
 
@@ -56,18 +56,18 @@ def pr_dict(item1, dict1):
 def pr_dbl(item1 = None, item2 = None):
 
     pr(item1, item2)
-    print()
+    print('')
 
 def pr_dbl_ind(indent_count, item1 = '', item2 = ''):
 
     pr_ind(indent_count, item1, item2)
-    print()
+    print('')
 
 def pr_done():
 
-    print()
+    print('')
     print('Done.')
-    print()
+    print('')
 
 def pr_except(item1, exception2):
 
@@ -87,7 +87,7 @@ def pr_ind(indent_count, item1 = None, item2 = None):
         pr(item1, item2)
             
     else:
-        print()
+        print('')
 
 def pr_list(item1, list1):
 
@@ -102,11 +102,11 @@ def pr_list(item1, list1):
 
 def pr_title(item1):
 
-    print()
+    print('')
     print("*" * TITLE_WIDTH)
     print("* " + item1 + ' ' *(TITLE_WIDTH - 4 - len(item1)) + " *")
     print("*" * TITLE_WIDTH)
-    print()
+    print('')
 
 def to_string(value):
     

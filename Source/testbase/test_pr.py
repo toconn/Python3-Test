@@ -47,10 +47,14 @@ def pr_dict(item1, dict1):
     first = TestIsFirst()
 
     for key, value in dict1.items():
+        
+        key_str = to_string(key)
+        value_str = to_string(value)
+        
         if first.is_first():
-            pr(item1, key + ' ' + value)
+            pr(item1, key_str + ' = ' + value_str)
         else:
-            pr('', key + ' ' + value)
+            pr('', key_str + ' = ' + value_str)
     return
 
 def pr_dbl(item1 = None, item2 = None):
@@ -116,6 +120,8 @@ def to_string(value):
         value_str = 'True' if value else 'False'
     elif isinstance(value, (bytes, int, complex, float)):
         value_str = str(value)
+    elif type(value).__str__ is not object.__str__:
+        value_str = value.__str__()
     else:
         value_str = value
     

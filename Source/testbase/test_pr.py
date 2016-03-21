@@ -11,35 +11,41 @@ INDENT_STRING = '    '
 TITLE_WIDTH = 80
 
 
-def pr(item1 = None, item2 = None):
+def pr(item1 = None, item2 = None, indent = ''):
 
     """
     :type item2: dict, tuple,string, int
     """
-    if item1 is not None:
+    if isinstance(item1, (list, tuple)):
+        
+        for item in item1:
+            item = indent + to_string(item)
+            print (item)
+        
+    elif item1 is not None:
     
-        item1 = to_string(item1)
+        item1 = indent + to_string(item1)
     
-        if(isinstance(item2,(list, tuple))):
+        if isinstance(item2,(list, tuple)):
             pr_list(item1, item2)
             return
-        elif(isinstance(item2, dict)):
+        
+        elif isinstance(item2, dict):
             pr_dict(item1, item2)
             return
-        elif(isinstance(item2, BaseException)):
-            pr_except(item1, item2)
-            return
-        else:
+                
+        elif item2 is not None:
             item2 = to_string(item2)
     
-        if not item1 and not item2:
+        if item1 is None and item2 is None:
             # both are empty strings:
             print('')
-        elif not item2:
+        elif item2 is None:            
             print(item1)
         else:
             print(item1 + ' ' *(COLUMN_2_START_POSITION - len(item1)) + ": " + item2)
     else:
+
         print('')
 
 def pr_dict(item1, dict1):
@@ -73,25 +79,10 @@ def pr_done():
     print('Done.')
     print('')
 
-def pr_except(item1, exception2):
-
-    pr(item1, type(exception2).__name__)
-    pr('', exception2.args)
-
 def pr_ind(indent_count, item1 = None, item2 = None):
-
-    if item1 is not None:
-        
-        item1 = to_string(item1)
-        
-        #Indent if not empty:
-        if item1:
-            item1 = INDENT_STRING * indent_count + item1
-        
-        pr(item1, item2)
-            
-    else:
-        print('')
+    
+    indent = INDENT_STRING * indent_count
+    pr (item1, item2, indent)
 
 def pr_list(item1, list1):
 
@@ -120,6 +111,8 @@ def to_string(value):
         value_str = 'True' if value else 'False'
     elif isinstance(value, (bytes, int, complex, float)):
         value_str = str(value)
+    elif isinstance(value, BaseException):
+        value_str = 'Exception: ' + type(value).__name__ + ': ' + value.args[0]
     elif type(value).__str__ is not object.__str__:
         value_str = value.__str__()
     else:

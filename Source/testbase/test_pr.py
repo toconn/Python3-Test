@@ -76,7 +76,7 @@ def pr_dbl_ind(indent_count, item1 = '', item2 = ''):
 def pr_done():
 
     print('')
-    print('Done.')
+    pr_section ('Done.')
     print('')
 
 def pr_ind(indent_count, item1 = None, item2 = None):
@@ -95,11 +95,17 @@ def pr_list(item1, list1):
             pr('', value)
     return
 
-def pr_title(item1):
+def pr_section(title):
+    
+    pr()
+    print("* " + title + ' ' + '*' * (TITLE_WIDTH - 3 - len(title)))
+    pr()
+
+def pr_title(title):
 
     print('')
     print("*" * TITLE_WIDTH)
-    print("* " + item1 + ' ' *(TITLE_WIDTH - 4 - len(item1)) + " *")
+    print("* " + title + ' ' *(TITLE_WIDTH - 4 - len(title)) + " *")
     print("*" * TITLE_WIDTH)
     print('')
 

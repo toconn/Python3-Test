@@ -118,7 +118,10 @@ def to_string(value):
     elif isinstance(value, (bytes, int, complex, float)):
         value_str = str(value)
     elif isinstance(value, BaseException):
-        value_str = 'Exception: ' + type(value).__name__ + ': ' + value.args[0]
+        if value.args:
+            value_str = 'Exception: ' + type(value).__name__ + ': ' + value.args[0]
+        else:
+            value_str = 'Exception: ' + type(value).__name__
     elif type(value).__str__ is not object.__str__:
         value_str = value.__str__()
     else:

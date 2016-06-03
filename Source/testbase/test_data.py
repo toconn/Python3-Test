@@ -12,6 +12,35 @@ list_unsorted = ['Item 2', 'Item 4', 'Item 1', 'Item 3']
 none_1 = None
 string_1 = 'This is string 1'
 
+ANIMALS = [
+    "Aardvark",
+    "Beaver",
+    "Cheetah",
+    "Dog",
+    "Elephant",
+    "Flamingo",
+    "Gorilla",
+    "Hippo",
+    "Iguana",
+    "Jaguar",
+    "Kangaroo",
+    "Llama",
+    "Matatee",
+    "Newt",
+    "Oselot",
+    "Praying Mantis",
+    "Quaill",
+    "Raccoon",
+    "Stingray",
+    "Tiger",
+    "U",        # Don't know any animals that start with U.
+    "Vulture",
+    "Whale",
+    "X",        # Don't know any X animals either.
+    "Yak",
+    "Zebra"
+    ]
+
 class AClass(object):
 
     def __init__(self, the_id, name, value):
@@ -20,11 +49,11 @@ class AClass(object):
         self.name = name
         self.value = value
 
-    def __str__(self):
-        return 'AClass [id=' + str(self.id) + ', name="' + self.name + ', value="' + self.value + '"]'
-        
     def __repr__(self):
-        return self.__str__()
+        return 'AClass [id=' + str(self.id) + ', name="' + self.name + ', value="' + self.value + '"]'
+    
+    def name_and_id(self):
+        return self.name + " (" + str(self.id) + ")"
 
 a_class_1 = AClass(1, "Item 1", "Value 1")
 a_class_2 = AClass(2, "Item 2", "Value 2")

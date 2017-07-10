@@ -65,19 +65,33 @@ def pr_dict(item1, dict1):
 
 def pr_dbl(item1 = None, item2 = None):
 
-    pr(item1, item2)
-    print('')
+    pr_double (item1, item2)
 
 def pr_dbl_ind(indent_count, item1 = '', item2 = ''):
 
-    pr_ind(indent_count, item1, item2)
+    pr_double_ind (indent_count, item1, item2)
+
+def pr_double(item1 = None, item2 = None):
+
+    pr(item1, item2)
     print('')
+
+def pr_double_ind(indent_count, item1 = '', item2 = ''):
+
+    pr_ind(indent_count, item1, item2)
+    pr()
 
 def pr_done():
 
-    print('')
-    pr_section ('Done.')
-    print('')
+    pr()
+    pr_header ('Done.')
+    pr()
+
+def pr_header(title):
+    
+    pr()
+    print("* " + title + ' ' + '*' * (TITLE_WIDTH - 3 - len(title)))
+    pr()
 
 def pr_ind(indent_count, item1 = None, item2 = None):
     
@@ -95,15 +109,9 @@ def pr_list(item1, list1):
             pr('', value)
     return
 
-def pr_section(title):
-    
-    pr()
-    print("* " + title + ' ' + '*' * (TITLE_WIDTH - 3 - len(title)))
-    pr()
-
 def pr_title(title):
 
-    print('')
+    # print('')
     print("*" * TITLE_WIDTH)
     print("* " + title + ' ' *(TITLE_WIDTH - 4 - len(title)) + " *")
     print("*" * TITLE_WIDTH)

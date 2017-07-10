@@ -23,13 +23,13 @@ class TestBase:
         if (isinstance (item2, int)):
             item2 = str (item2)
         elif (isinstance (item2, (list, tuple))):
-            self.prList(item1, item2)
+            self.pr_list(item1, item2)
             return
         elif (isinstance (item2, dict)):
-            self.prDict(item1, item2)
+            self.pr_dict(item1, item2)
             return
         elif (isinstance (item2, BaseException)):
-            self.prException(item1, item2)
+            self.pr_exception(item1, item2)
             return
 
         if (item1 == '' and item2 == ''):
@@ -39,7 +39,7 @@ class TestBase:
         else:
             print (item1 + ' ' * (TestBase.COLUMN_2_START_POSITION - len (item1)) + ": " + item2)
 
-    def prDict (self, item1, dict1):
+    def pr_dict (self, item1, dict1):
 
         first = TestIsFirst()
 
@@ -50,17 +50,23 @@ class TestBase:
                 self.pr('', key + ' ' + value)
         return
 
-    def prDouble (self, item1 = '', item2 = ''):
+    def pr_double (self, item1 = '', item2 = ''):
 
         self.pr (item1, item2)
         print('')
 
-    def prException (self, item1, exception2):
+    def pr_exception (self, item1, exception2):
 
         self.pr (item1, type(exception2).__name__)
         self.pr ('', exception2.args)
 
-    def prList (self, item1, list1):
+    def pr_header (self, title):
+        
+        self.pr()
+        print("* " + title + ' ' + '*' * (self.TITLE_WIDTH - 3 - len(title)))
+        self.pr()
+
+    def pr_list (self, item1, list1):
 
         first = TestIsFirst()
 
